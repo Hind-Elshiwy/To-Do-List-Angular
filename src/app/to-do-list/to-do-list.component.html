@@ -1,0 +1,36 @@
+<!-- This Layout was imported From W3schools -->
+
+  <ul class="nav nav-pills" style="float:left;" role="tablist">
+    <li class="nav-item">
+      <a class="nav-item nav-link" routerLinkActive="active" data-toggle="tab" routerLink="/toDoList">List</a>
+    </li>
+
+  </ul>
+  
+  <ul class="nav nav-pills" style="float:right;" role="tablist">
+    <li class="nav-item">
+      <p class="nav-link active" data-toggle="pill">Welcome : {{userName}}</p>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href="javascript:void()" (click)="logout()">Log Out</a>
+    </li>
+  </ul>
+  <br><br>
+  <div class="container" style="clear:both">
+    <div id="myDIV" class="header" *ngIf="(hasList == false)">
+        <h2 style="margin:5px">You Don't have  To-Do-List Yet</h2><br>
+        <span (click)="createList()" class="addBtn">+Create New List</span>
+      </div>
+    <div id="myDIV" class="header" *ngIf="(hasList == true)">
+        <h2 style="margin:5px">My To Do List</h2>
+        <input type="text" id="myInput" placeholder="Title..."  #idref>
+        <span (click)="addItem(idref.value);idref.value=''" class="addBtn">Add</span>
+      </div>
+      <div class="alert alert-warning" role="alert" [textContent]="msg" *ngIf="(msg)">
+          
+        </div>
+      <ul id="myUL" *ngFor="let item of items">
+        <li>{{item.name}} <span class="close" (click)="deleteItem(item._id)">x</span></li>
+      </ul>
+</div>
+          
